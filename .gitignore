@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+resume_text.txt
+extract_pdf.py
+이력서_홈페이지 제작용.pdf
