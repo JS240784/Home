@@ -2,47 +2,120 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeongseop Lee - Resume</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        h2 { color: #555; }
-        ul { list-style-type: none; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+        }
+        section {
+            margin: 40px 0;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            background-color: #ecf0f1;
+        }
+        section h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.8em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .experience ul ul {
+            margin-left: 20px;
+        }
+        .experience ul ul li {
+            list-style-type: disc;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            section {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Jeongseop Lee</h1>
-    <h2>Personal Information</h2>
-    <ul>
-        <li>Name: Jeongseop Lee</li>
-        <li>Email: jsl4661@hanyang.ac.kr</li>
-    </ul>
-    <h2>Education</h2>
-    <ul>
-        <li>B.S. in Applied Physics, Hanyang University ERICA<br>Feb. 2004 – Feb. 2012</li>
-        <li>M.S. in Applied Physics, Hanyang University<br>Feb. 2012 – Feb. 2014<br>Thesis: Output-Stabilized Yb-Doped Fiber Laser</li>
-    </ul>
-    <h2>Experience</h2>
-    <ul>
-        <li>EO Technics Co., Ltd.<br>Laser R&D Engineer | Feb. 2014 – May 2025<br>
+    <header>
+        <h1>Jeongseop Lee</h1>
+        <p>Email: <a href="mailto:jsl4661@hanyang.ac.kr">jsl4661@hanyang.ac.kr</a></p>
+    </header>
+    <div class="container">
+        <section id="education">
+            <h2>Education</h2>
             <ul>
-                <li>Development of ultrashort-pulse laser systems</li>
-                <li>Development of numerical simulation tools for laser and fiber systems</li>
+                <li><strong>B.S. in Applied Physics, Hanyang University ERICA</strong><br>Feb. 2004 – Feb. 2012</li>
+                <li><strong>M.S. in Applied Physics, Hanyang University</strong><br>Feb. 2012 – Feb. 2014<br>Thesis: Output-Stabilized Yb-Doped Fiber Laser</li>
             </ul>
-        </li>
-    </ul>
-    <h2>Research & Technical Skills</h2>
-    <ul>
-        <li>Yb-doped fiber lasers and amplifiers</li>
-        <li>Ultrashort-pulse oscillators</li>
-        <li>NLSE-based numerical simulations (SSFM, RK4IP, etc.)</li>
-        <li>Nonlinear frequency conversion: SHG / SFG / OPA (LBO, KTP, etc.)</li>
-        <li>Tools: MATLAB, Python, SNLO, RP Fiber Power</li>
-    </ul>
-    <h2>Publications & Patents</h2>
-    <ul>
-        <li>Lee, J. S., & Kim, J. W. (2014). Suppression of self-pulsing in Yb fibre lasers coupled with external Fabry–Pérot cavity. Electronics Letters, 50(9), 695–697.<br>https://doi.org/10.1049/el.2014.0530</li>
-        <li>Output-Stabilized Fiber Laser.<br>Korean Patent No. 10-1552109<br>Application No. 10-2014-0003393<br>Filed: January 10, 2014<br>Registered: September 4, 2015</li>
-    </ul>
+        </section>
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <ul>
+                <li><strong>EO Technics Co., Ltd.</strong><br>Laser R&D Engineer | Feb. 2014 – May 2025
+                    <ul>
+                        <li>Development of ultrashort-pulse laser systems</li>
+                        <li>Development of numerical simulation tools for laser and fiber systems</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="skills">
+            <h2>Research & Technical Skills</h2>
+            <ul>
+                <li>Yb-doped fiber lasers and amplifiers</li>
+                <li>Ultrashort-pulse oscillators</li>
+                <li>NLSE-based numerical simulations (SSFM, RK4IP, etc.)</li>
+                <li>Nonlinear frequency conversion: SHG / SFG / OPA (LBO, KTP, etc.)</li>
+                <li>Tools: MATLAB, Python, SNLO, RP Fiber Power</li>
+            </ul>
+        </section>
+        <section id="publications">
+            <h2>Publications & Patents</h2>
+            <ul>
+                <li><strong>Lee, J. S., & Kim, J. W. (2014).</strong> Suppression of self-pulsing in Yb fibre lasers coupled with external Fabry–Pérot cavity. <em>Electronics Letters</em>, 50(9), 695–697.<br><a href="https://doi.org/10.1049/el.2014.0530">https://doi.org/10.1049/el.2014.0530</a></li>
+                <li><strong>Output-Stabilized Fiber Laser.</strong><br>Korean Patent No. 10-1552109<br>Application No. 10-2014-0003393<br>Filed: January 10, 2014<br>Registered: September 4, 2015</li>
+            </ul>
+        </section>
+    </div>
 </body>
 </html>
