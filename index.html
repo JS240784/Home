@@ -187,12 +187,12 @@
         // Photo preview functionality
         window.addEventListener('DOMContentLoaded', function() {
             const preview = document.getElementById('preview');
-            const photoCount = 9;
+            const photoCount = 8;
             
             for (let i = 1; i <= photoCount; i++) {
                 const img = document.createElement('img');
-                img.src = `pic(${i}).jpg`;
-                img.alt = `Photo ${i}`;
+                img.src = `고양이 (${i}).jpg`;
+                img.alt = `Cat Photo ${i}`;
                 preview.appendChild(img);
             }
         });
