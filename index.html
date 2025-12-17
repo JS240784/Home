@@ -163,8 +163,7 @@
             </section>
         </div>
         <div id="photos" class="tab-content">
-            <h2>사진 첨부</h2>
-            <input type="file" id="photo-input" multiple accept="image/*">
+            <h2>사진</h2>
             <div id="preview"></div>
         </div>
     </div>
@@ -186,22 +185,15 @@
         }
 
         // Photo preview functionality
-        document.getElementById('photo-input').addEventListener('change', function(event) {
+        window.addEventListener('DOMContentLoaded', function() {
             const preview = document.getElementById('preview');
-            preview.innerHTML = ''; // Clear previous previews
+            const photoCount = 9;
             
-            const files = event.target.files;
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        preview.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
-                }
+            for (let i = 1; i <= photoCount; i++) {
+                const img = document.createElement('img');
+                img.src = `pic(${i}).jpg`;
+                img.alt = `Photo ${i}`;
+                preview.appendChild(img);
             }
         });
     </script>
