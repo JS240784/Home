@@ -92,6 +92,7 @@
         }
         .tab-content {
             display: none;
+            min-height: 600px;
         }
         .tab-content.active {
             display: block;
@@ -122,8 +123,8 @@
     </header>
     <div class="container">
         <div class="tabs">
-            <button class="tab-button active" onclick="openTab('resume')">Resume</button>
-            <button class="tab-button" onclick="openTab('photos')">Photos</button>
+            <button class="tab-button active" onclick="openTab('resume', event)">Resume</button>
+            <button class="tab-button" onclick="openTab('photos', event)">Photos</button>
         </div>
         <div id="resume" class="tab-content active">
             <section id="education-experience">
@@ -168,7 +169,7 @@
         </div>
     </div>
     <script>
-        function openTab(tabName) {
+        function openTab(tabName, event) {
             // Hide all tab contents
             const tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(content => content.classList.remove('active'));
