@@ -231,12 +231,23 @@
         // Photo preview functionality
         window.addEventListener('DOMContentLoaded', function() {
             const preview = document.getElementById('preview');
-            const photoCount = 21;
             
-            for (let i = 1; i <= photoCount; i++) {
+            // 고양이 (1).jpg ~ 고양이 (8).jpg
+            for (let i = 1; i <= 8; i++) {
                 const img = document.createElement('img');
                 img.src = `고양이 (${i}).jpg`;
                 img.alt = `Cat Photo ${i}`;
+                img.onclick = function() {
+                    openModal(this.src);
+                };
+                preview.appendChild(img);
+            }
+            
+            // 고양이2 (1).jpg ~ 고양이2 (13).jpg
+            for (let i = 1; i <= 13; i++) {
+                const img = document.createElement('img');
+                img.src = `고양이2 (${i}).jpg`;
+                img.alt = `Cat Photo 2-${i}`;
                 img.onclick = function() {
                     openModal(this.src);
                 };
