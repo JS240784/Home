@@ -113,30 +113,6 @@
             max-height: 200px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            position: relative;
-        }
-        .photo-item {
-            position: relative;
-            display: inline-block;
-            margin: 10px;
-        }
-        .delete-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: rgba(255, 0, 0, 0.7);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-        .delete-btn:hover {
-            background-color: rgba(255, 0, 0, 0.9);
-        }
-        #upload-btn:hover {
-            background-color: #005a96;
         }
     </style>
 </head>
@@ -188,12 +164,7 @@
         </div>
         <div id="photos" class="tab-content">
             <h2>사진 첨부</h2>
-            <div style="margin-bottom: 20px;">
-                <input type="file" id="photo-input" multiple accept="image/*">
-                <button id="upload-btn" style="padding: 10px 20px; background-color: #0070C0; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">업로드</button>
-            </div>
-            <div id="upload-status" style="margin-bottom: 20px;"></div>
-            <h3>업로드된 사진</h3>
+            <input type="file" id="photo-input" multiple accept="image/*">
             <div id="preview"></div>
         </div>
     </div>
@@ -216,104 +187,22 @@
 
         // Photo preview functionality
         document.getElementById('photo-input').addEventListener('change', function(event) {
-            // 선택된 파일 정보만 표시
-            const uploadStatus = document.getElementById('upload-status');
-            const files = event.target.files;
-            uploadStatus.innerHTML = `${files.length}개 파일 선택됨`;
-        });
-
-        // 업로드 버튼
-        document.getElementById('upload-btn').addEventListener('click', function() {
-            const photoInput = document.getElementById('photo-input');
-            const files = photoInput.files;
+            const preview = document.getElementById('preview');
+            preview.innerHTML = ''; // Clear previous previews
             
-            if (files.length === 0) {
-                alert('파일을 선택해주세요');
-                return;
-            }
-
-            const uploadStatus = document.getElementById('upload-status');
-            uploadStatus.innerHTML = '업로드 중...';
-
-            let uploadedCount = 0;
+            const files = event.target.files;
             for (let i = 0; i < files.length; i++) {
-                uploadPhoto(files[i], function(success) {
-                    uploadedCount++;
-                    if (uploadedCount === files.length) {
-                        uploadStatus.innerHTML = '업로드 완료!';
-                        photoInput.value = '';
-                        loadPhotos();
-                    }
-                });
-            }
-        });
-
-        function uploadPhoto(file, callback) {
-            const formData = new FormData();
-            formData.append('file', file);
-
-            fetch('/api/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    callback(true);
-                } else {
-                    console.error('업로드 실패:', data.error);
-                    callback(false);
+                const file = files[i];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
                 }
-            })
-            .catch(error => {
-                console.error('오류:', error);
-                callback(false);
-            });
-        }
-
-        function loadPhotos() {
-            fetch('/api/photos')
-            .then(response => response.json())
-            .then(data => {
-                const preview = document.getElementById('preview');
-                preview.innerHTML = '';
-                
-                if (data.photos.length === 0) {
-                    preview.innerHTML = '<p>업로드된 사진이 없습니다</p>';
-                    return;
-                }
-
-                data.photos.forEach(photo => {
-                    const photoItem = document.createElement('div');
-                    photoItem.className = 'photo-item';
-                    photoItem.innerHTML = `
-                        <img src="${photo.url}" alt="uploaded photo">
-                        <button class="delete-btn" onclick="deletePhoto('${photo.filename}')">삭제</button>
-                    `;
-                    preview.appendChild(photoItem);
-                });
-            })
-            .catch(error => console.error('오류:', error));
-        }
-
-        function deletePhoto(filename) {
-            if (confirm('이 사진을 삭제하시겠습니까?')) {
-                fetch(`/api/delete/${filename}`, {
-                    method: 'DELETE'
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        loadPhotos();
-                    }
-                })
-                .catch(error => console.error('오류:', error));
             }
-        }
-
-        // 페이지 로드 시 사진 목록 불러오기
-        document.addEventListener('DOMContentLoaded', function() {
-            loadPhotos();
         });
     </script>
 </body>
