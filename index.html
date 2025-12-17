@@ -23,7 +23,7 @@
         header {
             text-align: center;
             padding: 40px 0;
-            background-color: #2c3e50;
+            background-color: #0070C0;
             color: white;
         }
         header h1 {
@@ -37,7 +37,7 @@
         section {
             margin: 40px 0;
             padding: 20px;
-            border-left: 5px solid #3498db;
+            border-left: 5px solid #0070C0;
             background-color: #ecf0f1;
         }
         section h2 {
@@ -59,7 +59,7 @@
             list-style-type: disc;
         }
         a {
-            color: #3498db;
+            color: #0070C0;
             text-decoration: none;
         }
         a:hover {
@@ -73,6 +73,46 @@
                 padding: 10px;
             }
         }
+        /* Tab styles */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background-color: #f4f4f4;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab-button.active {
+            background-color: white;
+            border-bottom: 2px solid #0070C0;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        #photos {
+            padding: 20px;
+        }
+        #photo-input {
+            margin-bottom: 20px;
+        }
+        #preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        #preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -82,40 +122,88 @@
         <p>Email: <a href="mailto:jsl4661@hanyang.ac.kr">jsl4661@hanyang.ac.kr</a></p>
     </header>
     <div class="container">
-        <section id="education-experience">
-            <h2>Education & Experience</h2>
-            <h3>Education</h3>
-            <ul>
-                <li><strong>B.S. in Applied Physics, Hanyang University ERICA</strong><br>Feb. 2004 – Feb. 2012</li>
-                <li><strong>M.S. in Applied Physics, Hanyang University</strong><br>Feb. 2012 – Feb. 2014<br>Thesis: Output-Stabilized Yb-Doped Fiber Laser</li>
-            </ul>
-            <h3>Experience</h3>
-            <ul>
-                <li><strong>EO Technics Co., Ltd.</strong><br>Laser R&D Engineer | Feb. 2014 – May 2025
-                    <ul>
-                        <li>Development of ultrashort-pulse laser systems</li>
-                        <li>Development of numerical simulation tools for laser and fiber systems</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <section id="skills">
-            <h2>Research & Technical Skills</h2>
-            <ul>
-                <li>Yb-doped fiber lasers and amplifiers</li>
-                <li>Ultrashort-pulse oscillators</li>
-                <li>NLSE-based numerical simulations (SSFM, RK4IP, etc.)</li>
-                <li>Nonlinear frequency conversion: SHG / SFG / OPA (LBO, KTP, etc.)</li>
-                <li>Tools: MATLAB, Python, SNLO, RP Fiber Power</li>
-            </ul>
-        </section>
-        <section id="publications">
-            <h2>Publications & Patents</h2>
-            <ul>
-                <li><strong>Lee, J. S., & Kim, J. W. (2014).</strong> Suppression of self-pulsing in Yb fibre lasers coupled with external Fabry–Pérot cavity. <em>Electronics Letters</em>, 50(9), 695–697.<br><a href="https://doi.org/10.1049/el.2014.0530">https://doi.org/10.1049/el.2014.0530</a></li>
-                <li><strong>Output-Stabilized Fiber Laser.</strong><br>Korean Patent No. 10-1552109<br>Application No. 10-2014-0003393<br>Filed: January 10, 2014<br>Registered: September 4, 2015</li>
-            </ul>
-        </section>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('resume')">Resume</button>
+            <button class="tab-button" onclick="openTab('photos')">Photos</button>
+        </div>
+        <div id="resume" class="tab-content active">
+            <section id="education-experience">
+                <h2>Education & Experience</h2>
+                <h3>Education</h3>
+                <ul>
+                    <li><strong>B.S. in Applied Physics, Hanyang University ERICA</strong><br>Feb. 2004 – Feb. 2012</li>
+                    <li><strong>M.S. in Applied Physics, Hanyang University</strong><br>Feb. 2012 – Feb. 2014<br>Thesis: Output-Stabilized Yb-Doped Fiber Laser</li>
+                </ul>
+                <h3>Experience</h3>
+                <ul>
+                    <li><strong>EO Technics Co., Ltd.</strong><br>Laser R&D Engineer | Feb. 2014 – May 2025
+                        <ul>
+                            <li>Development of ultrashort-pulse laser systems</li>
+                            <li>Development of numerical simulation tools for laser and fiber systems</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section id="skills">
+                <h2>Research & Technical Skills</h2>
+                <ul>
+                    <li>Yb-doped fiber lasers and amplifiers</li>
+                    <li>Ultrashort-pulse oscillators</li>
+                    <li>NLSE-based numerical simulations (SSFM, RK4IP, etc.)</li>
+                    <li>Nonlinear frequency conversion: SHG / SFG / OPA (LBO, KTP, etc.)</li>
+                    <li>Tools: MATLAB, Python, SNLO, RP Fiber Power</li>
+                </ul>
+            </section>
+            <section id="publications">
+                <h2>Publications & Patents</h2>
+                <ul>
+                    <li><strong>Lee, J. S., & Kim, J. W. (2014).</strong> Suppression of self-pulsing in Yb fibre lasers coupled with external Fabry–Pérot cavity. <em>Electronics Letters</em>, 50(9), 695–697.<br><a href="https://doi.org/10.1049/el.2014.0530">https://doi.org/10.1049/el.2014.0530</a></li>
+                    <li><strong>Output-Stabilized Fiber Laser.</strong><br>Korean Patent No. 10-1552109<br>Application No. 10-2014-0003393<br>Filed: January 10, 2014<br>Registered: September 4, 2015</li>
+                </ul>
+            </section>
+        </div>
+        <div id="photos" class="tab-content">
+            <h2>사진 첨부</h2>
+            <input type="file" id="photo-input" multiple accept="image/*">
+            <div id="preview"></div>
+        </div>
     </div>
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to the clicked button
+            event.target.classList.add('active');
+        }
+
+        // Photo preview functionality
+        document.getElementById('photo-input').addEventListener('change', function(event) {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = ''; // Clear previous previews
+            
+            const files = event.target.files;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
